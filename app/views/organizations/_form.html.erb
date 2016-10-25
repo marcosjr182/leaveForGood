@@ -1,0 +1,19 @@
+<%= simple_form_for(@organization,:url => organization_path) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :phone %>
+    <%= f.input :accepts_donations %>
+    <h5>Contact Person receiving the donations</h5>
+    <%= f.input :contact_name %>
+    <%= f.input :contact_email %>
+    <%= f.input :contact_phone %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send" %>
+  </div>
+<% end %>
+  

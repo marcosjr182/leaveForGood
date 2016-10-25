@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LeaveForGood</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= content_for?(:head) ? yield(:head) : '' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-faded">
+      <div class="container">
+      
+        <div class="nav navbar-nav">
+          <a href="" class="navbar-brand">LeaveForGood</a>
+          <%= link_to "My Donations", donations_path, class: "nav-item nav-link" %>
+          <%= my_organization %>
+        </div>
+          
+          
+        <div class="navbar-nav pull-xs-right">
+          
+        <% if not user_signed_in? %>
+              <%= link_to "Sign In", new_user_session_url, class: "nav-item nav-link" %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link" %>
+            <% else %>  
+              <%= link_to "My Profile",edit_user_registration_path, class:'nav-item nav-link' %>
+            <% end %>
+        </div>
+         
+    </nav>
+ 
+  <div class="container">	
+  	<div class="page col-md-10 push-md-1">
+      <% if flash[:notice] %>
+        <div class="alert <%= flash[:notice_class] %> fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+  
+  </body>
+</html>

@@ -1,0 +1,185 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import 'https://fonts.googleapis.com/css?family=Noto+Sans';
+
+$white:  #fefefe;
+$green:  #54990C;
+$orange: #f38816;
+$red: 	 #C9302C;
+$blue:   #0390D0;
+
+$btn-primary-color:  #fff !default;
+$btn-primary-bg:     $blue !default;
+
+@import "bootstrap";
+@import 'bootstrap-datetimepicker';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "chosen";
+@import "donations";
+
+body {
+	font-family: "Noto Sans", sans-serif;
+}
+.donations-stats {
+	text-align:center;
+	background: #ddd;
+	border-radius:5px;
+	.number {
+		text-align:center;
+		font-size:3em;
+	}
+}
+.donations-list {
+	margin-top:2em;
+}
+.table {
+	margin-top:1em;
+}
+.actions-hd { color:$white;}
+.page {
+	padding-top:2em;
+	padding-bottom:2em;
+}
+.outline-onhold {
+	@extend .btn;
+	@extend .btn-outline-warning;
+	&:hover, &:focus {
+		color:$orange;
+		background: transparent;
+	}
+}
+.outline-confirmed {
+	@extend .btn;
+	@extend .btn-outline-success;
+	&:hover, &:focus {
+		color:$green;
+		background: transparent;
+	}
+}
+.outline-canceled {
+	@extend .btn;
+	@extend .btn-outline-danger;
+	&:hover, &:focus {
+		color:$red;
+		background: transparent;
+	}
+}
+
+.actions { 
+	text-align: right; 
+	.btn { margin-left:5px; }
+}
+
+.btn-donation-type {
+	padding:1em;
+	text-align:center;
+	font-weight:bold;
+	border-radius:5px;
+	color: $blue !important;
+	border: 1px solid $white !important;
+	background: $white !important; 
+	&.active {
+		color: $white;
+		background: $blue;
+		border: 1px solid $blue !important;
+	}
+	&:hover{
+		color: $blue;
+		text-decoration:none;
+		cursor:pointer;
+	}
+	.fa {
+		font-size: 3em;
+		margin-bottom:.5rem;
+	}
+}
+
+
+.donation_vehicle {
+	text-align:center;
+	font-weight:700;
+	padding: 1em 2em;
+	color: $blue !important;
+	background: $white !important; 
+	&.active {
+		color: $white !important;
+		background: $blue !important; 
+		border-color: $blue;
+		&:hover{
+			border-color:$blue;
+		}
+	}
+	&:hover{
+		border-color:$blue;
+		cursor:pointer;
+	}
+	margin-bottom:2em;
+}
+
+.page-header {
+	margin-bottom:1.5em;
+}
+
+.card-advanced {
+	padding:2em;
+}
+.btn-advanced-options {
+	color:$blue;
+	font-weight: 700;
+	letter-spacing:.1rem;
+	border-radius:0;
+	background:$white;
+
+}
+
+.advanced-row {
+	margin-top:2em;
+}
+.advanced-button-wrapper {
+	text-align:center;
+}
+.text-right {
+	text-align:right;
+}
+.text-center{
+	text-align:center;
+}
+.control-label {
+	margin-right:15px;
+	margin-left:15px;
+}
+.and {
+	@extend .text-center;
+	padding-top:5px;
+}
+
+.food-form {
+	padding:2em 1em;
+	border-radius:5px;
+	background: #f7f7f7;
+}
+.vehicle{
+	text-transform:uppercase;
+}
+
+.form-match {
+	padding:2em;
+	background: #eee;
+	border-radius:10px
+}
+

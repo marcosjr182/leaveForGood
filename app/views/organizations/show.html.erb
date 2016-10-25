@@ -1,0 +1,49 @@
+<div class="organization-header col-md-12">
+  <div class="row">
+    <div class="col-md-9">
+      <h2><%= @organization.name %></h2>
+      <span class="info">
+       <%= @organization.phone %> <br>
+       <%= @organization.address %> <br>
+       Contact Person: <%= @organization.contact_name %> 
+      </span>
+    </div>
+    <div class="col-md-3 donations-stats">
+      <div class="col-md-12 number">
+        <%= @donations.count %>
+      </div>
+      <span class="col-md-12 h5">DONATIONS</span>
+    </div>
+  </div>
+</div>
+
+<div class="donations-list col-md-12">
+  <div class="row">
+    <h3 class="col-md-10">Donations</h3>
+    <%= link_to "New Donation", new_donation_path, class: "col-md-2 btn btn-success" %>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-sm-6">Donation Info</th>
+        <th class="col-sm-2">Status</th>
+        <th class="col-sm-4 actions-hd">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @donations.each do |donation| %>
+      <tr class="row">
+        <td class="col-sm-6">
+            <b>Donor: </b> <%= render_donator(donation) %> <br> 
+            <b>Vehicle: </b> <span class="vehicle"><%= donation.vehicle %></span>  <br> 
+            <b>Pickup time: </b> <%= render_time(donation.pickup_window_start) %> -- <%= render_time(donation.pickup_window_end) %> <br> 
+            <b>Comments: </b> <%= donation.comments.first(20) %> <br>   
+        </td>
+        <td class="col-sm-2"><%= raw render_status(donation) %></td>
+        <td class="col-sm-4 actions"><%= raw render_donation_actions(donation) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

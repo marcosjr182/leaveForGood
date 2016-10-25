@@ -1,0 +1,32 @@
+
+<div class="col-md-12">
+  <b>Donor: </b> <%= render_donator(donation) %> <br> 
+  <b>Vehicle: </b> <span class="vehicle"><%= donation.vehicle %></span> <br> 
+  <b>Pickup time: </b> <%= render_time(donation.pickup_window_start) %> -- <%= render_time(donation.pickup_window_end) %> <br> 
+  <b>Comments: </b> <%= donation.comments %> <br>   
+  <br>
+</div>
+
+<div class="donations-list col-md-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="col-sm-6">Food Info</th>
+        <th class="col-sm-2">Food Type</th>
+        <th class="col-sm-2">Quantity</th>
+        <th class="col-sm-2 actions-hd">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% donation.foods.each do |food| %>
+      <tr class="row">
+        <td class="col-sm-6"><%= food.name %></td>
+        <td class="col-sm-2"><%= food.food_type %></td>
+        <td class="col-sm-2"><%= food.qty %></td>
+        <td class="col-sm-2 actions"><%= raw render_food_actions(donation, food)%> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

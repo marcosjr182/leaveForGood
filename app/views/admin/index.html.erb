@@ -1,0 +1,133 @@
+<div class="donations-list col-md-12">
+  <div class="row">
+    <h3 class="col-sm-10">Admin Panel</h3>
+  </div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			Unmatched Donations
+		</div>
+	</div>
+	<table class="table table-striped">
+    <tbody>
+      <% @unmatched.each do |donation| %>
+      <tr class="row">
+        <td class="col-sm-8">
+        	<%= link_to donation.id, admin_match_path(donation)  %>
+        </td>
+        
+        <td class="col-sm-4 actions"><%= link_to icon('times')+" Delete", donations_path, confirm: "Are you sure?", method: :delete, class: "btn btn-sm btn-danger" %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+	
+	<ul class="nav nav-tabs" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" data-toggle="tab" href="#donations" role="tab">Donations</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#organizations" role="tab">Organizations</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#users" role="tab">Users</a>
+	  </li>
+	</ul>
+
+	<div class="tab-content">
+	  <div class="tab-pane active" id="donations" role="tabpanel">	
+		  <table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th class="col-sm-6">Donation Info</th>
+		        <th class="col-sm-2">Status</th>
+		        <th class="col-sm-4 actions-hd">Actions</th>
+		      </tr>
+		    </thead>	
+		    <tbody>
+		      <% @donations.each do |donation| %>
+		      <tr class="row">
+		        <td class="col-sm-6">
+		          <b>Donor: </b> <%= render_donator(donation) %> <br> 
+		          <b>Vehicle: </b> <span class="vehicle"> <%= donation.vehicle %></span> <br> 
+		          <b>Pickup time: </b> <%= render_time(donation.pickup_window_start) %> -- <%= render_time(donation.pickup_window_end) %> <br> 
+		          <b>Comments: </b> <%= donation.comments.first(20) %> <br>   
+
+		        </td>
+		        <td class="col-sm-2"><%= raw render_status(donation) %></td>
+		        <td class="col-sm-4 actions"><%= raw render_donation_actions(donation)%> </td>
+		      </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
+		  <div class="row">
+		  	<div class="col-sm-12 text-right">
+		  		<%= link_to "See All", admin_donations_path, class:'btn btn-secondary' %>
+		  	</div>
+		  </div>
+	  </div>
+
+	  <div class="tab-pane" id="organizations" role="tabpanel">	
+		  <table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th class="col-sm-6">Donation Info</th>
+		        <th class="col-sm-2">Status</th>
+		        <th class="col-sm-4 actions-hd">Actions</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <% @organizations.each do |org| %>
+		      <tr class="row">
+		        <td class="col-sm-8">
+		          <b>Name: </b> <%= org.name %> <br> 
+		          <b>Address: </b> <%= org.address %> <br> 
+		          <b>Comments: </b> <%= org.phone %> <br>
+
+
+		        </td>
+		        <td class="col-sm-4 actions"><%= link_to icon('times')+" Delete", organization_path, confirm: "Are you sure?", method: :delete, class: "btn btn-sm btn-danger" %> </td>
+		      </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
+			<div class="row">
+		  	<div class="col-sm-12 text-right">
+		  		<%= link_to "See All", admin_organizations_path, class: "btn btn-secondary" %>
+		  	</div>
+		  </div>
+
+	  </div>
+
+	  <div class="tab-pane" id="users" role="tabpanel">	
+		  <table class="table table-striped">
+		    <thead>
+		      <tr>
+		        <th class="col-sm-1">ID</th>
+		        <th class="col-sm-7">E-mail</th>
+		        <th class="col-sm-4 actions-hd">Actions</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <% @users.each do |user| %>
+		      <tr class="row">
+		        <td class="col-sm-1"><%= user.id %></td>
+		        <td class="col-sm-7">
+		          <%= user.email %>
+		        </td>
+		        <td class="col-sm-4 actions"><%= link_to icon('times')+" Delete", edit_user_registration_path, confirm: "Are you sure?", method: :delete, class: "btn btn-sm btn-danger" %> </td>
+		      </tr>
+		      <% end %>
+		    </tbody>
+		  </table>
+		  <div class="row">
+		  	<div class="col-sm-12 text-right">
+		  		<%= link_to "See All", admin_users_path, class:'btn btn-secondary' %>
+		  	</div>
+		  </div>
+	  </div>
+
+	</div>
+
+</div>
+

@@ -1,0 +1,91 @@
+<%= simple_form_for @donation do |f| %>
+  <%= f.hidden_field :personal %>
+  <%= f.hidden_field :vehicle, value: 'car' %>
+
+	<div class="col-md-12">
+  
+  	<div class="row donation-type-row">
+	  	<a class="col-md-6 btn-donation-type personal">
+	  		<i class="fa fa-user col-xs-12"></i> Personal 
+	  	</a>
+	  	<a class="col-md-6 btn-donation-type organization">
+	  		<i class="fa fa-building col-xs-12"></i> Organization
+	  	</a>
+		</div>
+
+		<div class="col-md-12 btn-group donation-vehicles ">
+			<a class="btn btn-primary donation_vehicle col-md-4" data-value="car">
+				<i class="fa fa-car"></i>
+				Car
+			</a>
+			<a class="btn btn-primary donation_vehicle col-md-4" data-value="suv">			
+				SUV
+			</a>
+			<a class="btn btn-primary donation_vehicle col-md-4" data-value="truck">
+				<i class="fa fa-truck"></i>
+				Truck
+			</a>
+		</div>
+  	
+		<div class="row">
+			<h4 class="col-md-12">Pickup between:</h4>
+		</div>
+
+		<div class="row">	
+			<div class="col-md-5">
+	       <div class="form-group">
+	            <div class='input-group date' id='pickupStart'>
+	                <input name="donation[pickup_window_start]" type='text' class="form-control" />
+	                <span class="input-group-addon">
+	                    <%= icon('calendar') %>
+	                </span>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    <div class="col-md-2 and">
+	    	AND
+	    </div>
+
+			<div class="col-md-5">
+				<div class="form-group">
+	          <div class='input-group date' id='pickupEnd'>
+	              <input name="donation[pickup_window_end]" type='text' class="form-control" />
+	              <span class="input-group-addon">
+	                  <%= icon('calendar') %>
+	              </span>
+	          </div>
+	      </div>
+			</div>        
+		</div>
+  	
+  	<%= f.input :pickup_address, label: "Pickup Address" %>
+		
+		<div class="row advanced-row">
+			
+			<div class="col-sm-12 advanced-button-wrapper">
+				<button class=" btn btn-advanced-options" type="button" data-toggle="collapse" data-target="#advancedOptions" aria-expanded="false" aria-controls="advancedOptio	ns">
+	    		ADVANCED OPTIONS <i class="fa fa-arrow-down"></i>
+	  		</button>
+			</div>
+
+			<div class="col-sm-12 collapse" id="advancedOptions">
+			  <div class="card-avanced">
+			  	<%= f.input :anonymous, as: :boolean, class:'', label: "Anonymous Donation?" %>
+			  	<%= f.input :comments %>
+			  	<%= f.association :recipient,
+                  collection: Organization.all,
+                  include_blank: true,
+                  input_html: { class: 'chosen-select' }	
+					%>
+			  </div>
+			</div>
+		
+			<div class="col-sm-12 text-right">
+				<%= f.button :submit, class: "btn btn-primary" %>		
+			</div>
+
+		</div>
+
+	</div>
+<% end %>

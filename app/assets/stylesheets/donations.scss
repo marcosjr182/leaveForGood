@@ -1,0 +1,30 @@
+// Place all the styles related to the Donations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$white: #fefefe;
+$green: #54990C;
+$orange: #f38816;
+$blue: #0390D0;
+
+.donation-type-row {
+	background:#fefefe;
+	padding:.4em;
+	border-radius:5px;
+	margin-bottom: 2em;
+}
+
+
+
+
+.checkedDonationType{
+	background: #ab7454;
+}
+
+.checkedVehicle{
+	background: #ab7454;
+}
+
+.donation-vehicles {
+	padding-left:0;
+	padding-right:0;
+}
